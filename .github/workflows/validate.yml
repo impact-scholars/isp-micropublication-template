@@ -9,4 +9,4 @@ on:
 
 jobs:
   validate:
-    uses: Open-Scholar-Nexus/oaktree-sapling-config/.github/workflows/validate-paper.yml@main
+    uses: impact-scholars/isp-actions-config/.github/workflows/validate-paper.yml@main

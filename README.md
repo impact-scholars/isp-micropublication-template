@@ -2,11 +2,11 @@
 
 This repo contains a template for creating Impact Scholars Program micropublications using [MyST Markdown](https://mystmd.org/).
 
-For a complete tutorial, read [Authoring an ISP micropublication](https://open-scholar-nexus.github.io/oaktree-sapling/isp-intro)
+For a complete tutorial, read [Authoring an ISP micropublication](https://impact-scholars.github.io/isp-intro)
 
 ## Quick setup
 
-If you're familiar with the tools involved, these few steps are all you need. We expect you to have a working conda/mamba setup. For guidance on this, see the [Conda/Mamba Tutorial](https://open-scholar-nexus.github.io/oaktree-sapling/conda-tutorial).
+If you're familiar with the tools involved, these few steps are all you need. We expect you to have a working conda/mamba setup. For guidance on this, see the [Conda/Mamba Tutorial](https://impact-scholars.github.io/conda-tutorial).
 
 
 1. Install MyST Markdown using the provided environment file:
@@ -44,5 +44,5 @@ If you're familiar with the tools involved, these few steps are all you need. We
 
 ## I want to know more!
 
-We've outlined some technical details [here](https://open-scholar-nexus.github.io/oaktree-sapling/myst-deeper).
+We've outlined some technical details [here](https://impact-scholars.github.io/myst-deeper).
 
