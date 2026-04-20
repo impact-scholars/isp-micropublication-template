@@ -20,7 +20,7 @@ jobs:
   preview:
     needs: validate
     if: github.event_name == 'pull_request'
-    uses: impact-scholars/isp-actions-config/.github/workflows/deploy-paper.yml@main
+    uses: impact-scholars/isp-actions-config/.github/workflows/build-and-deploy.yml@main
     with:
       target: cloudflare
     secrets:
@@ -30,7 +30,7 @@ jobs:
   deploy:
     needs: validate
     if: github.event_name != 'pull_request'
-    uses: impact-scholars/isp-actions-config/.github/workflows/deploy-paper.yml@main
+    uses: impact-scholars/isp-actions-config/.github/workflows/build-and-deploy.yml@main
     with:
       target: pages
       base_url: /${{ github.event.repository.name }}
