@@ -1,4 +1,4 @@
-name: Publish Paper
+name: Deploy paper site
 
 on:
   pull_request:
@@ -15,12 +15,12 @@ permissions:
 
 jobs:
   validate:
-    uses: impact-scholars/isp-actions-config/.github/workflows/validate-paper.yml@main
+    uses: impact-scholars/isp-actions-config/.github/workflows/validate-paper.yml@v0.2.0
 
   preview:
     needs: validate
     if: github.event_name == 'pull_request'
-    uses: impact-scholars/isp-actions-config/.github/workflows/build-and-deploy.yml@main
+    uses: impact-scholars/isp-actions-config/.github/workflows/build-and-deploy.yml@v0.2.0
     with:
       target: cloudflare
       base_url: ""
@@ -31,7 +31,7 @@ jobs:
   deploy:
     needs: validate
     if: github.event_name != 'pull_request'
-    uses: impact-scholars/isp-actions-config/.github/workflows/build-and-deploy.yml@main
+    uses: impact-scholars/isp-actions-config/.github/workflows/build-and-deploy.yml@v0.2.0
     with:
       target: pages
       base_url: /${{ github.event.repository.name }}
