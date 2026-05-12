@@ -8,6 +8,7 @@ on:
 permissions:
   contents: read
   pull-requests: write # sticky comment
+  issues: write # create/apply editor-action-needed label on the PR
 
 jobs:
   remind:
