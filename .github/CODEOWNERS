@@ -1,0 +1,4 @@
+# Authors cannot silently edit workflows — every change to .github/workflows/**
+# requires review from an editor. Paired with branch protection on `main` that
+# requires CODEOWNERS review, this bounds the blast radius of the Zenodo token.
+.github/workflows/**  @impact-scholars/editors
