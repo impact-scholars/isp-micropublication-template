@@ -10,8 +10,8 @@ on:
       sandbox:
         required: false
         type: boolean
-        default: false
-        description: Use sandbox.zenodo.org (for testing only)
+        default: true
+        description: Use sandbox.zenodo.org (uncheck to publish to production zenodo.org)
 
 permissions:
   contents: write
