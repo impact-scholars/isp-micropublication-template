@@ -1,17 +1,62 @@
 version: 1
+
+# Shared Impact Scholars configuration. Keep both lines. Bump the tag (v0.2.0) only when the
+# program announces a new template version — both URLs must use the same tag.
 extends:
-- https://raw.githubusercontent.com/impact-scholars/impact-scholars.github.io/v0.1.0/nexus.yml
-- https://raw.githubusercontent.com/impact-scholars/isp-actions-config/v0.1.0/isp-micropublication-2025.yml
+- https://raw.githubusercontent.com/impact-scholars/impact-scholars.github.io/v0.2.0/nexus.yml
+- https://raw.githubusercontent.com/impact-scholars/isp-actions-config/v0.2.0/isp-micropublication-2025.yml
 
 project:
-  # Uncomment and fill when published
-  # doi: 10.5281/zenodo.XXXXXXX
-  # date: YYYY-MM-DD
+  # Unique id for this paper. Use isp-<repo-name>.
+  id: isp-micropublication-template
+  title: A feature-complete reference micropublication for Impact Scholars
+  # subtitle: Everything an author needs, in one place   # optional, shown under the title
+  # short_title: ISP reference paper                      # optional, used in the running header
+
+  keywords:
+  - impact scholars
+  - micropublication
+  - reproducible research
+  # This repo's URL — impact-scholars/<repo-name>, NOT your personal fork.
+  github: https://github.com/impact-scholars/isp-micropublication-template
+
+  # One BibTeX file. Declare every .bib you add here; delete bib files you don't use.
+  bibliography:
+  - bib.bib
+  # Abbreviations — define once; known terms are linked wherever they appear in the text.
+  # Keep this at project level: page frontmatter does not reach the merged multi-article PDF.
+  abbreviations:
+    ISP: Impact Scholars Program
+    SNR: signal-to-noise ratio
+    PDF: Portable Document Format
+
+  # Template / page options. Project level so they also reach the merged multi-article export
+  # (the same options set in page frontmatter would silently no-op). All optional.
+  options:
+    youtube: https://youtu.be/aBcDeFgHiJk?t=120 # deep-link your seminar talk; ?t=<seconds>
+    render_abbreviations: true # auto-place the abbreviations list after keywords
+    # breakable_figures: true                  # default false — let big figures/tables span pages
+    # full_width_body: false                   # default true — set false if abstract+summary > p.1
+
+  downloads:
+  # Download buttons on the paper page
+  - title: Seminar Presentation
+    url: https://youtu.be/aBcDeFgHiJk?t=120
+  # ---- Authors -------------------------------------------------------------------
+  # Required per author: name, affiliations, roles. Everything else is optional.
+  #   orcid              bare 16-char iD (the https://orcid.org/<id> URL also works)
+  #   email + corresponding: true   marks a corresponding author (any number allowed)
+  #   equal_contributor: true       shared first/second authorship
+  #   roles              CRediT terms — copy them verbatim from below to avoid typos.
+  # Affiliations are plain strings; repeat the string for each author who shares one.
   authors:
-  - name: Doe, J.
-    orcid: 0000-0000-0000-0001
+  - name: Ada Lovelace
+    orcid: 0000-0002-1825-0097
+    email: ada.lovelace@example.org
+    corresponding: true
+    equal_contributor: true
     affiliations:
-    - Department of Geosciences and Natural Resource Management, University of Copenhagen, Denmark
+    - Neuromatch Academy, Neuromatch, Inc.
     roles:
     - Conceptualization
     - Formal analysis
@@ -19,51 +64,57 @@ project:
     - Methodology
     - Software
     - Visualization
-    - Writing - original draft
-    - Writing - review & editing
-  - name: Sharma, A.J.
-    orcid: 0000-0000-0000-0002
+    - Writing – original draft
+    - Writing – review & editing
+  - name: Alan Turing
+    orcid: 0000-0002-1825-0098
+    equal_contributor: true
     affiliations:
-    - Department of Earth Sciences, Indian Institute of Technology Bombay, Mumbai, India
+    - Neuromatch Academy, Neuromatch, Inc.
     roles:
+    - Conceptualization
     - Formal analysis
-    - Investigation
-    - Writing - original draft
-    - Writing - review & editing
-  - name: Tanaka, S.
+    - Writing – original draft
+    - Writing – review & editing
+  - name: Grace Hopper # mentor / supervisor: minimal role list
+    orcid: 0000-0002-1825-0099
     affiliations:
-    - College of Urban and Environmental Sciences, Peking University, Beijing, China
+    - Institute for Advanced Study, Example University, Country
     roles:
-    - Formal analysis
-    - Writing - original draft
-    - Writing - review & editing
-  - name: Vera Gutierrez, C.
-    affiliations:
-    - Institute of Geology, Mining, and Metallurgy, Universidad Nacional Mayor de San Marcos, Lima, Peru
-    roles:
-    - Formal analysis
-    - Writing - original draft
-    - Writing - review & editing
-  - name: Ndlovu, T.
-    affiliations:
-    - Marine Research and Development, Oceanic Dynamics Ltd., Cape Town, South Africa
-    roles:
-    - Formal analysis
-    - Writing - review & editing
-
+    - Supervision
+    - Writing – review & editing
+  # ---- Table of contents ---------------------------------------------------------
+  # index.md is the manuscript. Keep supplementary.md only if you have a supplement
+  # (see the exports block below).
   toc:
   - file: index.md
+  - file: supplementary.md
+  # ---- PDF export ----------------------------------------------------------------
+  # The shared config already builds a single-article PDF from index.md, with a PDF
+  # download button, a CC-BY licence, and "Impact Scholars Program" funding — for free.
+  #
+  # You only need the block below if you keep a separate supplementary.md: it overrides the
+  # default export to MERGE index.md + supplementary.md into one PDF. The empty `title:` on
+  # each article suppresses a redundant per-article title page.
+  #
+  # NO SUPPLEMENT? Delete supplementary.md, remove it from `toc:` above, and delete this
+  # whole `exports:` block — the inherited single-article export takes over.
+  exports:
+  - format: typst
+    id: typst-pdf
+    template: https://github.com/impact-scholars/isp-lapreprint-typst.git
+    articles:
+    - file: index.md
+      title:
+    - file: supplementary.md
+      title:
 
-  id: isp-micropublication-template
-  title: This is the title of our awesome micropublication
-  keywords:
-  - keyword1
-  - keyword2
-  - keyword3
-  - keyword4
-  github: https://github.com/impact-scholars/isp-micropublication-template
-  bibliography:
-  - bib.bib
-  # downloads:
-  # - file: supplementary-material.zip
-  #   title: Supplementary Material
+        # ---- Funding (optional) --------------------------------------------------------
+        # "Impact Scholars Program" is applied automatically. Set this only if you have an
+        # additional grant — and keep the program credit when you do:
+        # funding: |
+        #   Impact Scholars Program; Example Funding Agency grant #12345
+
+        # ---- Filled in by the editor at publication — leave commented out ---------------
+        # doi:
+        # date:
